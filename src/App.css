@@ -1,0 +1,27 @@
+.radiobtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(238, 238, 238);
+    
+}
+.radiobtn1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(238, 238, 238);
+
+}
+
+.ani{
+    border-top: 5px solid black;
+    
+
+
+}
+@media screen and (max-width: 762px) {
+        .radiobtn {
+            display: grid;
+            }
+}
+
