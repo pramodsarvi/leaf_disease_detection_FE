@@ -8,7 +8,7 @@ import './App.css';
 
 const App = () => {
 
-const url='http://farmassist-pk.herokuapp.com';
+const url='https://farmassist-pk.herokuapp.com';
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState(' ');
   const [uploadedFile, setUploadedFile] = useState({});
