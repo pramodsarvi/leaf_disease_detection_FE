@@ -7,6 +7,8 @@ import axios from 'axios';
 import './App.css';
 
 const App = () => {
+
+const url='http://farmassist-pk.herokuapp.com';
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState(' ');
   const [uploadedFile, setUploadedFile] = useState({});
@@ -27,11 +29,16 @@ const App = () => {
     const formData = new FormData();
     formData.append('file', file);
     console.log(api+"!")
+    
+    // headers: {
+    //   'Access-Control-Allow-Origin':'http://127.0.0.1:3000/',
+    //   'Access-Control-Allow-Methods':'POST',
+    //   'Access-Control-Allow-Credentials':'true'
+    // },
     try {
-      const res = await axios.post(`${api}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
+      const res = await axios.post(url+api,formData, {
+        url:url+api,
+        mode:'no-cors',
         onUploadProgress: progressEvent => {
           setUploadPercentage(
             parseInt(
@@ -40,7 +47,7 @@ const App = () => {
             )
           );
         }
-      }).then((response)=>{setShow(!show);setDesc(response.data.pesticides);setFileURL(response.data.url);setDetection(response.data.disease);console.log(response.data)}).catch((err)=>{console.log("Fail")});
+      }).then((response)=>{setShow(!show);setDesc(response.data.pesticides);setFileURL(response.data.url);setDetection(response.data.disease);console.log(response.data)}).catch((err)=>{console.log(err)});
       
       // Clear percentage
       setTimeout(() => setUploadPercentage(0), 10000);
@@ -61,24 +68,24 @@ const App = () => {
     var check=e.target.value
     if (check==="potato")
     {
-      setApi('https://farmassistprod.herokuapp.com/potato');
+      setApi('/potato');
       console.log(api)
     }
     else if(check==="grape")
     {
-      setApi('https://farmassistprod.herokuapp.com/grape')
+      setApi('/grape')
       console.log(api)
 
     }
     else if(check==="tomato")
     {
-      setApi('https://farmassistprod.herokuapp.com/tomato')
+      setApi('/tomato')
       console.log(api)
 
     }
     else if(check==="apple")
     {
-      setApi('https://farmassistprod.herokuapp.com/apple')
+      setApi('/apple')
       console.log(api)
 
     }
